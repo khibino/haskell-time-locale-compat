@@ -11,7 +11,11 @@
 --
 -- This module provides compatibility module name
 -- for TimeLocale of old-locale or time-1.5.
-module Data.Time.Locale.Compat (TimeLocale, defaultTimeLocale) where
+module Data.Time.Locale.Compat (
+  -- * Time locale interface names
+  TimeLocale,
+  defaultTimeLocale,
+  ) where
 
 #if MIN_VERSION_time(1,5,0)
 import Data.Time.Format (TimeLocale, defaultTimeLocale)
