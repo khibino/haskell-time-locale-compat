@@ -15,10 +15,13 @@ module Data.Time.Locale.Compat (
   -- * Time locale interface names
   TimeLocale,
   defaultTimeLocale,
+  -- * Date format interface names
+  iso8601DateFormat,
+  rfc822DateFormat,
   ) where
 
 #if MIN_VERSION_time(1,5,0)
-import Data.Time.Format (TimeLocale, defaultTimeLocale)
+import Data.Time.Format (TimeLocale, defaultTimeLocale, iso8601DateFormat, rfc822DateFormat)
 #else
-import System.Locale (TimeLocale, defaultTimeLocale)
+import System.Locale (TimeLocale, defaultTimeLocale, iso8601DateFormat, rfc822DateFormat)
 #endif
