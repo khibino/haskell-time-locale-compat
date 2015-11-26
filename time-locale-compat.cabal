@@ -16,7 +16,7 @@ build-type:          Simple
 cabal-version:       >=1.10
 
 flag old-locale
-  description: If ture, use old-locale, otherwize use time 1.5 or newer.
+  description: If true, use old-locale, otherwise use time 1.5 or newer.
   default:     True
 
 library
