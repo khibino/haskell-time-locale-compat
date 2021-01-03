@@ -44,15 +44,30 @@ jobs:
       run: |
         set -ex
         cabal new-update
-        cabal new-build --jobs=2 --only-dependencies --enable-tests --enable-benchmarks all
+        if [ -r cabal.project ]; then
+          target=all
+        else
+          target=
+        fi
+        cabal new-build --jobs=2 --only-dependencies --enable-tests --enable-benchmarks $target
     - name: Build
       run: |
         set -ex
-        cabal new-build --jobs=2 --enable-tests --enable-benchmarks all
+        if [ -r cabal.project ]; then
+          target=all
+        else
+          target=
+        fi
+        cabal new-build --jobs=2 --enable-tests --enable-benchmarks $target
     - name: Run tests
       run: |
         set -ex
-        cabal new-test all
+        if [ -r cabal.project ]; then
+          target=all
+        else
+          target=
+        fi
+        cabal new-test $target
 
 ### Local Variables: ***
 ### mode:yaml ***
