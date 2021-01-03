@@ -16,6 +16,12 @@ jobs:
         include:
           - ghc: '8.8.4'
             cabal-install: '3.0.0.0'
+          - ghc: '8.8.3'
+            cabal-install: '3.0.0.0'
+          - ghc: '8.8.2'
+            cabal-install: '3.0.0.0'
+          - ghc: '8.8.1'
+            cabal-install: '3.0.0.0'
           - ghc: '8.6.5'
             cabal-install: '2.4.0.0'
           - ghc: '8.4.4'
@@ -62,12 +68,20 @@ jobs:
     - name: Run tests
       run: |
         set -ex
+        run_test=yes
         if [ -r cabal.project ]; then
           target=all
         else
           target=
+          if grep '^test-suite' *.cabal > /dev/null; then
+            :
+          else
+            run_test=no
+          fi
         fi
-        cabal new-test $target
+        if [ "$run_test" = yes ]; then
+          cabal new-test $target
+        fi
 
 ### Local Variables: ***
 ### mode:yaml ***
